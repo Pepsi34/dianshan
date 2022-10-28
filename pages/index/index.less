@@ -1,0 +1,66 @@
+.index_swiper{
+  swiper{
+    // 可以不写，默认 750rpx = 100%
+    width: 750rpx;
+    // swiper的高度要等于原图的高度，
+    // 否则切换成宽为750px的页面图片无法撑开
+    height: 340rpx;
+    image{
+      // 加入widthFix 高度自适应了不用写
+      width: 100%;
+    }
+  }
+}
+.index_cate{
+  display: flex;
+  navigator{
+    padding: 20rpx;
+    flex: 1;
+    image{
+      // 由于image并没有继承 navigator 的布局
+      // 所以这里设置 width: 100%; 继承父组件的大小
+      width: 100%;
+    }
+  }
+}
+
+.index_floor{
+  .floor_group{
+    .floor_title{
+      padding: 10px 0;
+      image{
+        width: 100%;
+      }
+    }
+    .floor_list{
+      // 内容会被修剪，并且其余内容不可见
+      overflow: hidden;
+      navigator{
+        // 左对齐让它们在一行上放
+        float: left;
+        width: 33.33%;
+
+        // 后四个超链接 +? 代表 后?张图片
+        &:nth-last-child(-n+4){
+          // 先看第一张图片的原图宽高 232*386
+          // 232 / 386 = 33.33vw / height
+          // 第一张图片高度 height = 33.33vw * 386 / 232
+          // 则后四个超链接的高度为
+          height: 33.33vw * 386 / 232 / 2;
+          border-left: 10rpx solid #fff;
+        }
+  
+        /* 2 3 两个超链接 */
+        &:nth-child(2),
+        &:nth-child(3){
+          border-bottom: 10rpx solid #fff;
+        }
+          image{
+            width: 100%;
+            // 继承父组件的高度
+            height: 100%;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,69 @@
+<view class="detail_swiper">
+	<!-- 轮播图开始 -->
+	<swiper
+	 autoplay
+	 circular
+	 indicator-dots
+	>
+		<swiper-item
+		 wx:for="{{goodsObj.pics}}"
+		 wx:key="pics_id"
+		 bindtap="handlePreviewImage"
+		 data-url="{{item.pics_mid}}"
+		>
+			<image mode="widthFix" src="{{item.pics_mid}}" />
+		</swiper-item>
+	</swiper>
+	<!-- 轮播图结束 -->
+</view>
+<!-- 价钱 -->
+<view class="goods_price">￥{{goodsObj.goods_price}}</view>
+<!-- 商品名称行 -->
+<view class="goods_name_row">
+	<!-- 商品名称 -->
+	<view class="goods_name">{{goodsObj.goods_name}}</view>
+	<!-- 收藏按钮 -->
+	<view class="goods_collect" bindtap="handleCollect">
+		<text class="iconfont   {{isCollect?'icon-shoucang1':'icon-shoucang'}} "></text>
+		<view class="collect_text">收藏</view>
+	</view>
+</view>
+<!-- 商品详请 -->
+<view class="goods_Info">
+	<view class="goods_info_title">图文详情</view>
+	<view class="goods_info_content">
+		<!-- 富文本 -->
+		<rich-text nodes="{{goodsObj.goods_introduce}}"></rich-text>
+	</view>
+</view>
+<!-- 底部工具栏 -->
+<view class="btm_tool">
+	<view class="tool_item">
+		<view class="iconfont icon-kefu"></view>
+		<view>客服</view>
+		<!-- 这里之所以不把view标签改为button标签是因为担心按钮有很多样式需要改, 没那么好改样式 -->
+		<!-- 使用障眼法 把透明度变为0 宽高变成父元素的宽高 -->
+		<button open-type="contact"></button>
+	</view>
+	<view class="tool_item">
+		<view class="iconfont icon-yixianshi-"></view>
+		<view>分享</view>
+		<button open-type="share"></button>
+	</view>
+	<!-- open-type="switchTab" 使得能跳转到tabbar页面 -->
+	<navigator
+	 open-type="switchTab"
+	 url="/pages/cart/index"
+	 class="tool_item"
+	>
+		<view class="iconfont icon-gouwuche"></view>
+		<view>购物车</view>
+	</navigator>
+	<view class="tool_item btn_cart " bindtap="handleCartAdd">
+		加入购物车
+	</view>
+	<view class="tool_item btn_buy">
+		立即购买
+	</view>
+</view>
+

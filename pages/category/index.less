@@ -1,0 +1,61 @@
+page{
+  // 先设置父页面高度
+  height: 100%;
+}
+.cates{
+  // 继承父页面高度
+  height: 100%;
+  .cates_container{
+    // less中使用calc的时候要使用 ~ 包裹
+    height: ~'calc( 100vh - 90rpx )';
+    display: flex;
+    .left_menu{
+      // 因为现在是伸缩盒子的子项 有默认高度 100%
+      flex: 2;
+      .menu_item{
+        display: flex;
+        height: 80rpx;
+        justify-content: center;
+        align-items: center;
+        font-size: 30rpx;
+      }
+      .active{
+        color: var(--themeColor);
+        border-left: 5rpx solid currentColor;
+      }
+    }
+    .right_content{
+      // 因为现在是伸缩盒子的子项 有默认高度 100%
+      flex: 5;
+      .goods_group{
+        .goods_title{
+          height: 80rpx;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .delimeter{
+            color: #ccc;
+            padding: 0 10rpx;
+          }
+          .title{}
+        }
+        .goods_list{
+          display: flex;
+          // 允许换行
+          flex-wrap: wrap;
+          navigator{
+            width: 33.33%;
+            // 文字图片居中对齐
+            text-align: center;
+            image{
+              width: 50%;
+            }
+          }
+          .goods_name{
+          
+          }
+        }
+      }
+    }
+  }
+}

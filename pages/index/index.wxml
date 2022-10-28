@@ -1,0 +1,63 @@
+<view class="index">
+	<!-- 搜索框开始 -->
+	<SearchInput></SearchInput>
+	<!-- 搜索框结束 -->
+	<!-- 轮播图开始 -->
+	<view class="index_swiper">
+		<swiper
+		 autoplay
+		 indicator-dots
+		 circular
+		>
+			<swiper-item wx:for="{{swiperList}}" wx:key="goods_id">
+				<navigator url="{{item.navigator_url}}">
+					<image src="{{item.image_src}}" mode="widthFix" />
+				</navigator>
+			</swiper-item>
+		</swiper>
+	</view>
+	<!-- 轮播图结束 -->
+	<!-- 导航栏开始 -->
+	<view class="index_cate">
+		<navigator
+		 wx:for="{{cateList}}"
+		 wx:key="name"
+		 url="/pages/category/index"
+		 open-type="switchTab"
+		>
+			<image src="{{item.image_src}}" mode="widthFix" />
+		</navigator>
+	</view>
+	<!-- 导航栏结束 -->
+	<!-- 楼层开始 -->
+	<view class="index_floor">
+		<view
+		 class="floor_group"
+		 wx:for="{{floorList}}"
+		 wx:key="floor_title"
+		 wx:for-item="item1"
+		 wx:for-index="index1"
+		>
+			<!-- 标题 -->
+			<view class="floor_title">
+				<image src="{{item1.floor_title.image_src}}" mode="widthFix" />
+			</view>
+			<!-- 内容 -->
+			<view class="floor_list">
+				<navigator
+				 wx:for="{{item1.product_list}}"
+				 wx:key="name"
+				 wx:for-item="item2"
+				 wx:for-index="index2"
+				 url="{{item2.navigator_url}}"
+				>
+					<!-- mode要求: 第一张图片为widthFix,后四张为样式中定义好高度 -->
+					<!-- scaleToFill意味着将图片内容拉升到图片标签的高度 -->
+					<image mode="{{index2===0?'widthFix':'scaleToFill'}}" src="{{item2.image_src}}" />
+				</navigator>
+			</view>
+		</view>
+	</view>
+	<!-- 楼层结束 -->
+</view>
+
